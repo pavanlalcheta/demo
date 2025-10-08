@@ -2,7 +2,7 @@ pipeline{
   agent any
   stages{
       stage('Build & Report'){
-           stpes{
+           steps{
                 checkout scm
                 sh 'Build Stage executed Successfully..!'
            }

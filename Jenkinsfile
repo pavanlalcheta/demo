@@ -1,0 +1,20 @@
+pipeline{
+  agent any
+  stages{
+      stage('Build & Report'){
+           stpes{
+                checkout scm
+                sh 'Build Stage executed Successfully..!'
+           }
+      }
+  }
+  post{
+      sucess{
+          echo  'Build Completed and marked as successful'
+      }
+      failure{
+          echo  'Build Failed'
+      }
+  }
+  
+}

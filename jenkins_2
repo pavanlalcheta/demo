@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    parameters {
+        string(name:'name',defaultValue:"Guest",description:"Enter the Name:")
+        booleanParam(name: "run_test",defaultValue: true,description: "Run Test:")
+        choice(name: 'environment', choices: ['dev','testing','production'],description: "Enter the Environment:")
+    }
+    stages{
+        stage('Greeting'){
+            steps{
+                echo "Hello ${params.name}"
+                echo "Run Test:${params.run_test}"
+                echo "Environment:${params.environment}"
+            }
+        }
+        stage('checkout Source code'){
+            steps{
+                echo "Starting git checkout...."
+                git url: "https://github.com/pavanlalcheta/jenkins_demo.git", branch: 'main'
+                echo "Git checkout completed"
+            }
+        }
+        stage('Run Example Command'){
+            steps{
+                echo "Executing Shell command...."
+                sh 'echo "Hello Declarative Pipeline!"'
+                sh 'echo ------- Reading File ---------'
+                sh 'cat README.md'
+            }
+        }
+    }
+}

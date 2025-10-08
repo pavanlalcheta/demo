@@ -4,7 +4,7 @@ pipeline{
       stage('Build & Report'){
            steps{
                 checkout scm
-                sh 'Build Stage executed Successfully..!'
+                sh 'echo "Build Stage executed Successfully..!"'
            }
       }
   }

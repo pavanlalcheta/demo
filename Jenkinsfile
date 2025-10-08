@@ -9,7 +9,7 @@ pipeline{
       }
   }
   post{
-      sucess{
+      success{
           echo  'Build Completed and marked as successful'
       }
       failure{
